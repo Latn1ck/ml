@@ -13,15 +13,15 @@ svr_poly = SVR(kernel="poly", C=100, gamma="auto", degree=3, epsilon=0.1, coef0=
 yPredRBF=svr_rbf.fit(X, y).predict(X)
 yPredPoly=svr_poly.fit(X, y).predict(X)
 print('RBF')
-print(f'mse error: {mean_squared_error(y, y_pred=yPredRBF)}')
-print(f'mse error: {mean_absolute_error(y, y_pred=yPredRBF)}')
-print(f'mse error: {r2_score(y, y_pred=yPredRBF)}')
+print(f'mse: {mean_squared_error(y, y_pred=yPredRBF)}')
+print(f'mean absolute error: {mean_absolute_error(y, y_pred=yPredRBF)}')
+print(f'determination: {r2_score(y, y_pred=yPredRBF)}')
 print('Polynomial')
-print(f'mse error: {mean_squared_error(y, y_pred=yPredPoly)}')
-print(f'mse error: {mean_absolute_error(y, y_pred=yPredPoly)}')
-print(f'mse error: {r2_score(y, y_pred=yPredPoly)}')
+print(f'mse: {mean_squared_error(y, y_pred=yPredPoly)}')
+print(f'mean absolute error: {mean_absolute_error(y, y_pred=yPredPoly)}')
+print(f'determination: {r2_score(y, y_pred=yPredPoly)}')
 
-
+#дальше визуализация
 lw = 2
 
 svrs = [svr_rbf, svr_poly]
@@ -63,5 +63,5 @@ for ix, svr in enumerate(svrs):
 
 fig.text(0.5, 0.04, "data", ha="center", va="center")
 fig.text(0.06, 0.5, "target", ha="center", va="center", rotation="vertical")
-fig.suptitle("Support Vector Regression", fontsize=14)
+fig.suptitle("Nonlinear Regression", fontsize=14)
 plt.show()
